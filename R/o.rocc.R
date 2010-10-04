@@ -20,9 +20,6 @@ function (g,out,xgenes=200)
     stop("xgenes must be a vector")   
 
 require(ROCR)
-require(caret)
-require(class)
-
 
 
 
@@ -33,9 +30,9 @@ require(class)
 g<-as.matrix(g)
 out<-factor(out,levels=c(0,1))
 
-confusion<-matrix(nrow=18,ncol=length(xgenes))
+confusion<-matrix(nrow=17,ncol=length(xgenes))
 confusion<-as.data.frame(confusion)
-rownames(confusion)[1:18]<-c("Accuracy","Kappa","AccuracyLower95CI","AccuracyUpper95CI","AccurayNull", "AccuracyNull_pValue","AccuracyRandomAssignment","AccuracyRandomAssignment_pValue","Sensitivity","Specificity","PPV",
+rownames(confusion)[1:17]<-c("Accuracy","AccuracyLower95CI","AccuracyUpper95CI","AccurayNull", "AccuracyNull_pValue","AccuracyRandomAssignment","AccuracyRandomAssignment_pValue","Sensitivity","Specificity","PPV",
 "NPV","Prevalence","predicted1-true1","predicted0-true1","predicted1-true0","predicted0-true0","Balanced Accuracy")
 
 concordance<-matrix(nrow=length(out),ncol=length(xgenes))
@@ -133,20 +130,27 @@ print(v)
 }
 
 concordance[,size]<-pr
-
-conf<-confusionMatrix(pr,out)
 tab<-table(pr,out)
-confusion[1:6,size]<- confusionMatrix(pr,out)$overall
-anu<-confusionMatrix(pr,out)$overall[5]
+
+confusion[1,size]<-(tab[1,1]+tab[2,2])/sum(tab)
+confusion[2,size]<-binom.test(tab[1,1]+tab[2,2],sum(tab))$conf.int[1]
+confusion[3,size]<-binom.test(tab[1,1]+tab[2,2],sum(tab))$conf.int[2]
+anu<-max(table(out)/sum(table(out)))
+confusion[4,size]<-anu
+confusion[5,size]<-binom.test(tab[1,1]+tab[2,2],sum(tab),p=anu,alternative="greater")$p.value
 ara<-anu^2+((1-anu)^2)
-confusion[7,size]<-ara
-confusion[8,size]<-binom.test((tab[1,1]+tab[2,2]),sum(tab),ara,alternative="greater")$p.value
-confusion[9:13,size]<- confusionMatrix(pr,out)$byClass[1:5]
-confusion[14,size] <- tab[2,2]
-confusion[15,size] <- tab[1,2]
-confusion[16,size] <- tab[2,1]
-confusion[17,size] <- tab[1,1]
-confusion[18,size]<-(confusion[9,size]+confusion[10,size])/2 
+confusion[6,size]<-ara
+confusion[7,size]<-binom.test((tab[1,1]+tab[2,2]),sum(tab),p=ara,alternative="greater")$p.value
+confusion[8,size]<-tab[2,2]/(tab[2,2]+tab[1,2])
+confusion[9,size]<-tab[1,1]/(tab[1,1]+tab[2,1])
+confusion[10,size]<-tab[2,2]/(tab[2,2]+tab[2,1])
+confusion[11,size]<-tab[1,1]/(tab[1,1]+tab[1,2])
+confusion[12,size]<-(tab[2,2]+tab[1,2])/sum(tab)
+confusion[13,size] <- tab[2,2]
+confusion[14,size] <- tab[1,2]
+confusion[15,size] <- tab[2,1]
+confusion[16,size] <- tab[1,1]
+confusion[17,size]<-(confusion[8,size]+confusion[9,size])/2 
 
 print(paste("Size=",xgenes[size],"done"))
 print(date())

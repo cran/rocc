@@ -1,5 +1,5 @@
 \name{o.rocc}
-\Rdversion{1.1}
+\Rdversion{1.2}
 \alias{o.rocc}
 \title{LOOCV using the ROC based classifier
 }
@@ -45,13 +45,13 @@ a list (orocc object) with components
 
 }
 \references{
-Lauss M, Frigyesi A, Ryden T, Hoglund M. Robust assignment of cancer subtypes from expression data using a ROC-based classifier. (in preparation)
+Lauss M, Frigyesi A, Ryden T, Hoglund M. Robust assignment of cancer subtypes from expression data using a uni-variate gene expression average as classifier. BMC Cancer 2010 (in print)
 }
 \author{
 Martin Lauss
 }
 \note{
-depends on the packages ROCR and caret
+depends on the package ROCR
 }
 \seealso{
 tr.rocc(), p.rocc()

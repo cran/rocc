@@ -1,7 +1,7 @@
 Package: rocc
 Title: ROC based classification
-Version: 1.0
-Depends: ROCR, caret, class, e1071
+Version: 1.2
+Depends: ROCR
 Author: Martin Lauss
 Description: Functions for a classification method based on receiver
         operating characteristics (ROC). Briefly, features are selected
@@ -15,6 +15,6 @@ Description: Functions for a classification method based on receiver
         gene expression data, but might also apply to other problems.
 Maintainer: Martin Lauss <martin.lauss@med.lu.se>
 License: GPL (>= 2)
-Packaged: 2010-04-14 10:52:22 UTC; Martin
+Packaged: 2010-10-04 08:58:00 UTC; Martin
 Repository: CRAN
-Date/Publication: 2010-04-15 13:49:49
+Date/Publication: 2010-10-04 10:03:36

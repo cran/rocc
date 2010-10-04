@@ -1,5 +1,5 @@
 \name{p.rocc}
-\Rdversion{1.1}
+\Rdversion{1.2}
 \alias{p.rocc}
 \title{
 Making predictions using the ROC based classifier
@@ -26,7 +26,7 @@ If the metagene value is higher than the threshold value (obtained from trocc$cu
 a named factor vector with levels 0 and 1 containing the predictions.
 }
 \references{
-Lauss M, Frigyesi A, Ryden T, Hoglund M. Robust assignment of cancer subtypes from expression data using a ROC-based classifier. (in preparation)
+Lauss M, Frigyesi A, Ryden T, Hoglund M. Robust assignment of cancer subtypes from expression data using a uni-variate gene expression average as classifier. BMC Cancer 2010 (in print)
 }
 \author{
 Martin Lauss

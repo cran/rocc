@@ -1,5 +1,5 @@
 \name{tr.rocc}
-\Rdversion{1.1}
+\Rdversion{1.2}
 \alias{tr.rocc}
 \title{
 Training of a ROC based classifier
@@ -53,7 +53,7 @@ a list as a trocc object with components
        
 }
 \references{
-Lauss M, Frigyesi A, Ryden T, Hoglund M. Robust assignment of cancer subtypes from expression data using a ROC-based classifier. (in preparation)
+Lauss M, Frigyesi A, Ryden T, Hoglund M. Robust assignment of cancer subtypes from expression data using a uni-variate gene expression average as classifier. BMC Cancer 2010 (in print)
 }
 \author{
 Martin Lauss
