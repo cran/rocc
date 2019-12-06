@@ -1,5 +1,4 @@
 \name{p.rocc}
-\Rdversion{1.2}
 \alias{p.rocc}
 \title{
 Making predictions using the ROC based classifier

@@ -19,7 +19,6 @@ function (g,out,xgenes=200)
   if(!is.vector(xgenes))
     stop("xgenes must be a vector")   
 
-require(ROCR)
 
 
 
@@ -47,7 +46,7 @@ colnames(confusion)[size]<-xgenes[size]
 colnames(concordance)[size]<-xgenes[size]
 
 pr<-as.numeric(rep(NA,length(colnames(g))))
-pr<-factor(pr,level=c(0,1))
+pr<-factor(pr,levels=c(0,1))
 names(pr)<-colnames(g)
 
 for(v in 1:length(colnames(g))){

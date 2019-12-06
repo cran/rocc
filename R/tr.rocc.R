@@ -21,8 +21,6 @@ function (g,out,xgenes=200)
   if(0%in%xgenes)
     stop("xgenes must not contain 0")      
 
-require(ROCR)
-
 
 ####### Feature Selection according to highest AUC
 g<-as.matrix(g)

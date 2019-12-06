@@ -1,5 +1,4 @@
 \name{o.rocc}
-\Rdversion{1.2}
 \alias{o.rocc}
 \title{LOOCV using the ROC based classifier
 }
@@ -95,23 +94,23 @@ resultval
 
 
 ######### o.rocc results can be redone as a LOOCV with tr.rocc und p.rocc functions
-
-results$concordance[,"50"]
-
-## now with a LOOCV loop of tr.rocc and p.rocc
-pr<-as.numeric(rep(NA,length(colnames(g))))
-pr<-factor(pr,level=c(0,1))
-
-for (i in 1:length(colnames(g))){
-e<-g[,-i]
-oute<-out[-i]
-train<-tr.rocc(e,oute,xgenes=50)
-procc<-p.rocc(train,g[,i]) ## ignore warnings, they dont apply here
-pr[i]<-procc
-}
-
-all.equal(results$concordance[,"50"],pr)
-# TRUE
+#
+#results$concordance[,"50"]
+#
+### now with a LOOCV loop of tr.rocc and p.rocc
+#pr<-as.numeric(rep(NA,length(colnames(g))))
+#pr<-factor(pr,level=c(0,1))
+#
+#for (i in 1:length(colnames(g))){
+#e<-g[,-i]
+#oute<-out[-i]
+#train<-tr.rocc(e,oute,xgenes=50)
+#procc<-p.rocc(train,g[,i]) ## ignore warnings, they dont apply here
+#pr[i]<-procc
+#}
+#
+#all.equal(results$concordance[,"50"],pr)
+## TRUE
 
 
 }

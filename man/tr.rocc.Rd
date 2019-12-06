@@ -1,5 +1,4 @@
 \name{tr.rocc}
-\Rdversion{1.2}
 \alias{tr.rocc}
 \title{
 Training of a ROC based classifier

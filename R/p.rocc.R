@@ -4,12 +4,12 @@ function (trocc,newsample)
   
   if(class(trocc)!="trocc")
     stop("Object has to be a trocc object obtained from tr.rocc function")  
-  if(class(newsample)!="matrix")
+  if(is(newsample,"matrix")==FALSE)
     warning("newsample should be a matrix (with genes as rows and samples as columns)")  
   if(is.null(colnames(newsample)))
     warning("Colnames for newsample with sample names are missing")
   
-  if(class(newsample)!="matrix")
+  if(is(newsample,"matrix")==FALSE)
   newsample<-as.matrix(newsample)
   
   if(is.null(rownames(newsample)))
@@ -19,7 +19,7 @@ function (trocc,newsample)
   
 
 pr<-as.numeric(rep(NA,length(colnames(newsample))))
-pr<-factor(pr,level=c(0,1))
+pr<-factor(pr,levels=c(0,1))
 names(pr)<-colnames(newsample)
 
 for (v in 1:dim(newsample)[2])
